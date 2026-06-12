@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o meu amor ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffe6e6 0%, #ffb3b3 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #d63031;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #4d4d4d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        .botoes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            height: 80px;
+            width: 100%;
+        }
+        button {
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.1s ease;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        #btn-sim {
+            background-color: #2ecc71;
+            color: white;
+            position: absolute;
+            left: 20px;
+            z-index: 10;
+        }
+        #btn-nao {
+            background-color: #e74c3c;
+            color: white;
+            position: absolute;
+            right: 20px;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Quer ser minha eterna namorada? 🌹</h1>
+        <p>Tenho uma surpresa para você no WhatsApp...</p>
+        
+        <div class="botoes">
+            <button id="btn-sim" onclick="aceitou()">SIM!</button>
+            <button id="btn-nao" onmouseover="fuga()" onclick="fuga()">NÃO</button>
+        </div>
+    </div>
+
+    <script>
+        // ⚠️ ATENÇÃO: Mude para o SEU número abaixo (DDI + DDD + Número) sem espaços ou traços.
+        // Exemplo: "5581999999999" (55 do Brasil, código de área e o número)
+        const SEU_NUMERO = "5581992304256"; 
+
+        // Esta frase com o "Te amo ❤️" garante a animação de corações no WhatsApp
+        const textoMensagem = "Eu aceito! Feliz Dia dos Namorados, te amo! ❤️🌹";
+        const MENSAGEM_FORMATADA = encodeURIComponent(textoMensagem);
+
+        function fuga() {
+            const botaoNao = document.getElementById('btn-nao');
+            
+            // Calcula limites seguros para o botão não sumir completamente da tela
+            const larguraJanela = window.innerWidth;
+            const alturaJanela = window.innerHeight;
+            
+            const novoX = Math.random() * (larguraJanela - botaoNao.offsetWidth - 40) + 20;
+            const novoY = Math.random() * (alturaJanela - botaoNao.offsetHeight - 40) + 20;
+            
+            botaoNao.style.position = 'fixed';
+            botaoNao.style.left = novoX + 'px';
+            botaoNao.style.top = novoY + 'px';
+        }
+
+        function aceitou() {
+            // Abre o WhatsApp direto no seu chat com a mensagem preenchida
+            window.location.href = `https://api.whatsapp.com/send?phone=${SEU_NUMERO}&text=${MENSAGEM_FORMATADA}`;
+        }
+    </script>
+</body>
+</html>
